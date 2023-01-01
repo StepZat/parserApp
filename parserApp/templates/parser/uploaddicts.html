@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{%load static%}
+    {%block styles%}
+    <link rel="stylesheet" href="{% static 'dicts.css'%}">
+    {%endblock%}
+    {%block content%}
+        <h3 class="dicts_label">Загрузка словарей</h3>
+        <hr>
+        <p class="dicts">Данные регионов, направлений деятельности и остальных словарей были успешно загружены</p>
+        <a href="{% url 'about' %}"><button type="submit" class="btn btn-success">Вернуться на главную страницу</button></a>
+    {%endblock%}

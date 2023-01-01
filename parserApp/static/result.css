@@ -1,0 +1,19 @@
+h1 {
+    margin-left: 50%;
+    width: max-content;
+}
+
+h2 {
+    margin-left: 32%;
+    width: max-content;
+}
+
+.btn.btn-outline-success {
+    margin-left: 32%;
+    margin-bottom: 10px;
+}
+
+.alert.alert-info {
+    margin-left: 32%;
+    width: 65%;
+}

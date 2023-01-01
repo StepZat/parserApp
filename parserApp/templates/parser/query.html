@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+{%load static%}
+{%block styles%}
+<link rel="stylesheet" href="{% static 'main.css'%}">
+    {%endblock%}
+{% block content %}
+    <div class="navi-label">
+    <h3><b>Введите данные запроса</b></h3><br>
+    </div>
+    <form method="post" id = "queryForm">
+        {% csrf_token %}
+        <b>Текст запроса</b> {{form.query_text}}{% csrf_token %}<br>
+        <b>Регион</b>{{form.region}}{% csrf_token %}<br>
+        <b>Опыт работы</b>
+        {{form.expr}}{% csrf_token %}<br>
+        <b>Занятость</b>
+        {{form.empl}}{% csrf_token %}<br>
+        <b>Расписание</b>
+        {{form.schedl}}{% csrf_token %}<br>
+        <b>Профессия</b>
+        <div class="outside-container">
+        <div class="container">
+            {{form.jobs}}
+        </div>{% csrf_token %}
+        </div>
+        <br>
+        <button class="btn btn-success">Отправить запрос</button>
+    </form>
+
+{% endblock %}

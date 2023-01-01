@@ -1,0 +1,50 @@
+h1 {
+    margin-left: 54%;
+}
+
+.register {
+    margin-left: 56%;
+}
+b {
+    margin-left: 56%;
+}
+
+.login input {
+    margin-left: 56%;
+}
+
+.login b {
+    margin-left: 56%;
+}
+
+.password input{
+    margin-left: 56%;
+}
+
+.password b{
+    margin-left: 56%;
+}
+
+.btn.btn-success {
+    margin-left: 58%;
+}
+
+#confirm.btn.btn-success  {
+    margin-left: 56%;
+}
+
+.form-errors p#notfound {
+    margin-left: 50%;
+}
+
+.form-errors p#tryagain {
+    margin-left: 55%;
+}
+
+.form-errors p#reqs {
+    margin-left: 43%;
+}
+
+
+
+

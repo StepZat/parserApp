@@ -1,0 +1,63 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block styles%}
+<link rel="stylesheet" href="{% static 'result.css'%}">
+{%endblock%}
+
+{%block content%}
+<h1>Результаты запроса</h1>
+<h2>Количество вакансий: {{vacs|length}}</h2>
+<h2>Средняя зарплата: {{ avg_salary }} рублей</h2>
+<a href="{% url 'export_to_csv_unix' %}">
+    <button class="btn btn-outline-success" title="Файл сохраняется в кодировке UTF-8. При открытии необходимо выбрать кодировку.">
+        Сохранить в CSV
+    </button>
+</a>
+<br>
+{% for item in vacancies%}
+    <div class="alert alert-info">
+        <p>Вакансия: {{item.vac_name}}</p>
+        <hr>
+        <p>Регион: {{item.area_id}}</p>
+        <hr>
+        <p>Работодатель: {{item.employer_name}}</p>
+        <hr>
+        {% if item.salary_from and item.salary_to %}
+        <p>Зарплата от {{item.salary_from}} до {{item.salary_to}}</p>
+        {% elif item.salary_from and not item.salary_to %}
+        <p>Зарплата от {{item.salary_from}}</p>
+        {% elif not item.salary_from and item.salary_to %}
+        <p>Зарплата до {{item.salary_to}}</p>
+        {% elif not item.salary_from and not item.salary_to %}
+        <p>Зарплата не указана</p>
+        {% endif %}
+    </div>
+{%endfor%}
+
+{% if vacancies.has_other_pages %}
+    <div class="btn-group" role="group" aria-label="Item pagination" style="margin-left: 50%">
+        {% if vacancies.has_previous %}
+            <a href="?page={{ vacancies.previous_page_number }}" class="btn btn-outline-success">Вперед</a>
+        {% endif %}
+
+        {% for page_number in vacancies.paginator.page_range %}
+            {% if vacancies.number == page_number %}
+                <button class="btn btn-outline-success active">
+                    <span>{{ page_number }} <span class="sr-only">(current)</span></span>
+                </button>
+            {% else %}
+                <a href="?page={{ page_number }}" class="btn btn-outline-success">
+                    {{ page_number }}
+                </a>
+            {% endif %}
+        {% endfor %}
+
+        {% if vacancies.has_next %}
+            <a href="?page={{ vacancies.next_page_number }}" class="btn btn-outline-success">Назад</a>
+        {% endif %}
+    </div>
+    {% endif %}
+  </div>
+<br><br>
+
+{%endblock%}

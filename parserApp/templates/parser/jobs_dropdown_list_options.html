@@ -1,0 +1,4 @@
+<option value="">---------</option>
+{% for job in jobs %}
+<option value="{{ job.role_id }}">{{ job.role_name }}</option>
+{% endfor %}

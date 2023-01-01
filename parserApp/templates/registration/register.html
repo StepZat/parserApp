@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block styles%}
+<link rel="stylesheet" href="{% static 'login.css'%}">
+{%endblock%}
+{% block content %}
+    <h1 class="register">Регистрация</h1>
+    <hr>
+
+    <form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+        <div class="login">
+        <b>Имя пользователя</b> <br>
+        {{ form.username }}
+        </div> <br>
+
+        <div class="password">
+        <b>Пароль</b><br>
+        {{ form.password1 }}
+        </div> <br>
+
+        <div class="password">
+        <b>Подтверждение пароля</b><br>
+        {{ form.password2 }}
+        </div> <br>
+    <button type="submit" class="btn btn-success" id="confirm">Зарегистрироваться</button>
+    </form>
+    {% if form.errors %}
+        <div class="form-errors">
+            <p id="reqs">Логин или пароль не удовлетворяют требованиям, либо пароли не совпадают.</p>
+            <p id="tryagain">Пожалуйста, попробуйте снова.</p>
+        </div>
+    {% endif %}
+{% endblock %}
