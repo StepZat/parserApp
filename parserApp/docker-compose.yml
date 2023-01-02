@@ -11,7 +11,7 @@ services:
       - ${POSTGRES_PORT:-5432}:5432
 
   web:
-    image: stepzat/parser_web:latest
+    image: stepzat/parser_web:0.5
     depends_on:
       - pg_db
     volumes:
@@ -22,7 +22,7 @@ services:
       - "8000"
 
   nginx:
-    image: stepzat/parser_nginx:latest
+    image: stepzat/parser_nginx:0.5
     depends_on:
       - web
     volumes:

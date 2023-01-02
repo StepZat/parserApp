@@ -5,7 +5,6 @@ from .models import Area, ChildRole, EducationLevel, Experience, Employment, Sch
 
 
 class ParserForm(forms.Form):
-    choices = list(Area.objects.all().values_list('area_name'))
     query_text = forms.CharField(max_length=100,
                                  required=False,
                                  widget=forms.TextInput(

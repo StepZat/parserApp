@@ -1,4 +1,3 @@
-import codecs
 import csv
 from datetime import datetime
 
